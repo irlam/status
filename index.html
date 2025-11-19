@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status - DefectTracker.uk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>System Status</h1>
+            <div class="last-updated">
+                Last updated: <span id="last-updated-time">Loading...</span>
+            </div>
+        </header>
+
+        <div id="status-banner" class="status-banner loading">
+            <div class="status-icon">⏳</div>
+            <div class="status-text">
+                <h2 id="overall-status">Checking status...</h2>
+                <p id="overall-description">Please wait while we check all services</p>
+            </div>
+        </div>
+
+        <div id="incidents-section" class="incidents-section" style="display: none;">
+            <h2>Active Incidents</h2>
+            <div id="incidents-container"></div>
+        </div>
+
+        <section class="services-section">
+            <h2>Services</h2>
+            <div id="services-container" class="services-grid">
+                <div class="service-card loading">
+                    <div class="service-header">
+                        <span class="service-name">Loading services...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Status page powered by PHP • Auto-refreshes every 60 seconds</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

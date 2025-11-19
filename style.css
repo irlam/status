@@ -1,0 +1,441 @@
+/**
+ * Status Page Styles
+ * Responsive design with no build tools required
+ */
+
+:root {
+    --color-bg: #f5f7fa;
+    --color-text: #2d3748;
+    --color-text-light: #718096;
+    --color-border: #e2e8f0;
+    --color-white: #ffffff;
+    
+    /* Status colors */
+    --color-success: #48bb78;
+    --color-success-bg: #f0fff4;
+    --color-warning: #ed8936;
+    --color-warning-bg: #fffaf0;
+    --color-error: #f56565;
+    --color-error-bg: #fff5f5;
+    --color-loading: #4299e1;
+    
+    /* Severity colors */
+    --color-low: #48bb78;
+    --color-medium: #ed8936;
+    --color-high: #f56565;
+    --color-critical: #c53030;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* Border radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    padding-top: var(--spacing-lg);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+}
+
+.last-updated {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+}
+
+/* Status Banner */
+.status-banner {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    border-left: 4px solid var(--color-loading);
+    transition: all 0.3s ease;
+}
+
+.status-banner.loading {
+    border-left-color: var(--color-loading);
+    background-color: #eff6ff;
+}
+
+.status-banner.operational {
+    border-left-color: var(--color-success);
+    background-color: var(--color-success-bg);
+}
+
+.status-banner.partial_outage {
+    border-left-color: var(--color-warning);
+    background-color: var(--color-warning-bg);
+}
+
+.status-banner.major_outage {
+    border-left-color: var(--color-error);
+    background-color: var(--color-error-bg);
+}
+
+.status-icon {
+    font-size: 3rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.status-text h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.status-text p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+}
+
+/* Services Section */
+.services-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.services-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+/* Service Card */
+.service-card {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    border-left: 4px solid var(--color-border);
+}
+
+.service-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.service-card.UP,
+.service-card.up {
+    border-left-color: var(--color-success);
+}
+
+.service-card.DOWN,
+.service-card.down {
+    border-left-color: var(--color-error);
+}
+
+.service-card.loading {
+    border-left-color: var(--color-loading);
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.service-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+.service-status {
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.service-status.up {
+    background-color: var(--color-success-bg);
+    color: var(--color-success);
+}
+
+.service-status.down {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+}
+
+.service-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.service-detail {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.detail-label {
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+.detail-value {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.detail-value.warning {
+    color: var(--color-warning);
+}
+
+.detail-value.critical {
+    color: var(--color-error);
+}
+
+.service-link {
+    display: inline-block;
+    color: var(--color-loading);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-top: var(--spacing-sm);
+    transition: color 0.2s ease;
+}
+
+.service-link:hover {
+    color: #2b6cb0;
+    text-decoration: underline;
+}
+
+/* Incidents Section */
+.incidents-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.incidents-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+}
+
+#incidents-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.incident-card {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--color-border);
+}
+
+.incident-card.low {
+    border-left-color: var(--color-low);
+}
+
+.incident-card.medium {
+    border-left-color: var(--color-medium);
+}
+
+.incident-card.high {
+    border-left-color: var(--color-high);
+}
+
+.incident-card.critical {
+    border-left-color: var(--color-critical);
+}
+
+.incident-header {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.incident-severity,
+.incident-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.5px;
+}
+
+.incident-severity {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+}
+
+.incident-status {
+    background-color: var(--color-bg);
+    color: var(--color-text-light);
+}
+
+.incident-card.resolved .incident-status {
+    background-color: var(--color-success-bg);
+    color: var(--color-success);
+}
+
+.incident-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+}
+
+.incident-description {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.incident-times {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+}
+
+.incident-time strong {
+    color: var(--color-text);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--spacing-2xl);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-sm);
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .status-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-lg);
+    }
+    
+    .status-icon {
+        font-size: 2.5rem;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .status-text h2 {
+        font-size: 1.25rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .status-banner {
+        padding: var(--spacing-md);
+    }
+    
+    .service-card,
+    .incident-card {
+        padding: var(--spacing-md);
+    }
+}
+
+/* Print styles */
+@media print {
+    .footer {
+        display: none;
+    }
+    
+    .service-link {
+        text-decoration: underline;
+    }
+}
