@@ -1,58 +1,54 @@
 <?php
 /**
- * Configuration for status page services
- * Centralised service definitions
+ * Live Construction Suite service checks.
  */
 
 return [
     'services' => [
         [
-            'name' => 'Main Website',
-            'tag' => 'website',
-            'url' => 'https://defecttracker.uk',
-            'link' => 'https://defecttracker.uk',
+            'name' => 'Construction Suite',
+            'tag' => 'suite',
+            'url' => 'https://suite.defecttracker.uk/',
+            'link' => 'https://suite.defecttracker.uk/',
+            'expected_text' => 'Construction',
         ],
         [
-            'name' => 'API',
-            'tag' => 'api',
-            'url' => 'https://api.defecttracker.uk/health',
-            'link' => 'https://api.defecttracker.uk',
+            'name' => 'Defect Tracker',
+            'tag' => 'defects',
+            'url' => 'https://defectnotice.site/health.php',
+            'link' => 'https://defectnotice.site/',
         ],
         [
-            'name' => 'Database',
-            'tag' => 'database',
-            'url' => 'https://db.defecttracker.uk/ping',
-            'link' => 'https://db.defecttracker.uk',
+            'name' => 'Site Deliveries',
+            'tag' => 'deliveries',
+            'url' => 'https://sitedeliveries.site/',
+            'link' => 'https://sitedeliveries.site/',
+            'expected_text' => 'Site Deliveries',
         ],
         [
-            'name' => 'GitHub (Test)',
-            'tag' => 'github',
-            'url' => 'https://github.com',
-            'link' => 'https://github.com',
+            'name' => 'Safety Tours',
+            'tag' => 'safety',
+            'url' => 'https://sitesafety.site/health.php?format=json',
+            'link' => 'https://sitesafety.site/',
+        ],
+        [
+            'name' => 'Site Permits',
+            'tag' => 'permits',
+            'url' => 'https://sitepermits.site/',
+            'link' => 'https://sitepermits.site/',
+            'expected_text' => 'Permits System',
+        ],
+        [
+            'name' => 'Handover',
+            'tag' => 'handover',
+            'url' => 'https://handover.defecttracker.uk/',
+            'link' => 'https://handover.defecttracker.uk/',
+            'expected_text' => 'Handover',
         ],
     ],
     'thresholds' => [
         'warning_latency_ms' => 1000,
         'critical_latency_ms' => 3000,
     ],
-    'incidents' => [
-        [
-            'id' => 1,
-            'title' => 'API Performance Degradation',
-            'status' => 'investigating',
-            'severity' => 'medium',
-            'started_at' => '2025-11-19T08:00:00Z',
-            'resolved_at' => null,
-            'description' => 'We are currently investigating reports of slow API response times. Our team is working to identify and resolve the issue.',
-        ],
-        [
-            'id' => 2,
-            'title' => 'Database Maintenance',
-            'status' => 'resolved',
-            'severity' => 'low',
-            'started_at' => '2025-11-19T06:00:00Z',
-            'resolved_at' => '2025-11-19T07:30:00Z',
-            'description' => 'Scheduled database maintenance completed successfully. All services have been restored.',
-        ],
-    ],
+    'incidents' => [],
 ];
